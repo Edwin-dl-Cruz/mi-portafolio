@@ -6,14 +6,14 @@ import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Hobbies from './pages/Hobbies';
 import Contact from './pages/Contact';
-import Footer from './components/Footer';
+
 
 function App() {
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/mi-portafolio" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Projects />} />
