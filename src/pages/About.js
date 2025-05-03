@@ -3,8 +3,22 @@ import { Card, Container, Row, Col, Button, Modal } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import edwinImage from "./../assets/IMG.jpg";
+import { useEffect } from "react";
 
 function AboutMe() {
+  // Scroll Arrow
+  const [showArrow, setShowArrow] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowArrow(window.scrollY < 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Modal
   const [show, setShow] = useState(false);
   const [modalContent, setModalContent] = useState({ title: "", text: "" });
 
@@ -17,37 +31,33 @@ function AboutMe() {
 
   const trayectoria = [
     {
-      title: "Lenguajes",
-      text: "He trabajado con Java y JavaScript para crear soluciones robustas tanto del lado del cliente como del servidor.",
+      title: "Soporte Técnico",
+      subtitle: "Teleperformance CLIP (2022 - 2023)",
+      text: `Brindé atención al cliente y soporte remoto por diferentes canales como llamadas y correo electrónico. Además, lideré actividades de Back Office, presté soporte en la mesa de control y en la aplicación móvil, asegurando la operación fluida de los sistemas y la experiencia del usuario.`,
     },
     {
-      title: "Herramientas",
-      text: "Manejo herramientas como Bootstrap para estilos responsivos y GitHub para control de versiones.",
+      title: "Auxiliar de Sistemas",
+      subtitle: "Instituto Cedrus (2023 - 2024)",
+      text: `Me encargué del mantenimiento preventivo y correctivo del equipo tecnológico. Gestioné tickets de soporte técnico con Freshdesk, desarrollé aplicaciones móviles utilizando plataformas no-code y gestioné el sitio web institucional mediante WordPress.`,
     },
     {
-      title: "Habilidades",
-      text: "Utilizo herramientas de inteligencia artificial para potenciar mis habilidades de desarrollo y optimización.",
+      title: "Gerente de Turno",
+      subtitle: "McDonald's (2018 - 2020)",
+      text: `Supervisé operaciones y cumplí con indicadores clave de rendimiento (KPIs). Coordiné al personal durante los turnos y prioricé la experiencia del cliente para asegurar altos niveles de satisfacción.`,
     },
     {
-      title: "Filosofía",
-      text: "Me enfoco en alcanzar metas claras, resolver problemas y mantener una actitud de aprendizaje constante.",
-    },
-    {
-      title: "Metodologías",
-      text: "Trabajo con metodologías ágiles como Scrum y Kanban para mantener una buena gestión de proyectos.",
-    },
-    {
-      title: "Proyectos",
-      text: "He desarrollado sitios web dinámicos usando React, incluyendo dashboards, portafolios y tiendas online.",
+      title: "Asesor Educativo (Home Office)",
+      subtitle: "Universidad UTEL y Ucamp (2020 - 2022)",
+      text: `Ofrecí atención personalizada a estudiantes interesados en programas académicos. Participé en procesos de ventas y brindé orientación educativa, ayudando a los alumnos a tomar decisiones informadas sobre su formación.`,
     },
   ];
 
   return (
-    <section id="about" className="container about-section" >
-      <Container >
-        <Row className="align-items-center" >
+    <section id="about" className="container about-section">
+      <Container>
+        <Row className="align-items-center">
           {/* Hero Section */}
-          <Col md={12} className="text-center "data-aos="zoom-in" >
+          <Col md={12} className="text-center " data-aos="zoom-in">
             <img
               src={edwinImage} // Cambia esto por tu foto real
               alt="Edwin Marquez"
@@ -74,7 +84,7 @@ function AboutMe() {
 
         {/* Mi Trayectoria */}
         <Row className="mt-5">
-          <Col data-aos="zoom-in">
+          <Col data-aos="flip-up">
             <h3 className="text-center mb-4">Mi Trayectoria</h3>
             <Carousel
               responsive={{
@@ -94,6 +104,22 @@ function AboutMe() {
               {trayectoria.map((item, idx) => (
                 <div key={idx} className="p-2">
                   <Card className="text-center h-100">
+                    <Card.Body className="card-fixed-height">
+                      <Card.Title>{item.title}</Card.Title>
+                      <Card.Subtitle className="mb-2 text-muted">
+                        {item.subtitle}
+                      </Card.Subtitle>
+                      <Card.Text>{item.text.slice(0, 100)}...</Card.Text>
+                      <Button
+                        variant="primary"
+                        onClick={() => handleShow(item)}
+                      >
+                        Ver más
+                      </Button>
+                    </Card.Body>
+                    {/* {trayectoria.map((item, idx) => (
+                <div key={idx} className="p-2">
+                  <Card className="text-center h-100">
                     <Card.Body>
                       <Card.Title>{item.title}</Card.Title>
                       <Card.Text>{item.text.slice(0, 80)}...</Card.Text>
@@ -103,7 +129,7 @@ function AboutMe() {
                       >
                         Ver más
                       </Button>
-                    </Card.Body>
+                    </Card.Body> */}
                   </Card>
                 </div>
               ))}
@@ -161,6 +187,8 @@ function AboutMe() {
           </Col>
         </Row>
       </Container>
+
+      {showArrow && <div className="scroll-down-arrow">↓</div>}
     </section>
   );
 }

@@ -4,7 +4,7 @@ function Home() {
         <div data-aos="fade-up">
           <h1>Hola, soy EDWIN MARQUEZ 👨‍💻</h1>
           <p className="lead">Desarrollador Full Stack | Apasionado por la Tecnología</p>
-          <a href="/Contact" className="btn btn-primary mt-3">Contáctame</a>
+          <a href="https://wa.me/527713545923?text=Hola,%20vi%20tu%20portafolio%20web" className="btn btn-primary mt-3">Contáctame</a>
         </div>
       </section>
     );
