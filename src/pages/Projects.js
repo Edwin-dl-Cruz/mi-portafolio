@@ -19,7 +19,7 @@ const projects = [
         <div className="row">
           {projects.map((project, index) => (
             <div className="col-md-6 mb-4" key={index} data-aos="zoom-in">
-              <div className="card h-100 bg-secondary text-white">
+              <div className="card h-100 bg-secondary bg-gradient text-white">
                 <div className="card-body">
                   <h5 className="card-title">{project.title}</h5>
                   <p className="card-text">{project.description}</p>

@@ -43,11 +43,11 @@ function AboutMe() {
   ];
 
   return (
-    <section id="about" className="container about-section" data-aos="zoom-in">
-      <Container>
-        <Row className="align-items-center">
+    <section id="about" className="container about-section" >
+      <Container >
+        <Row className="align-items-center" >
           {/* Hero Section */}
-          <Col md={12} className="text-center">
+          <Col md={12} className="text-center "data-aos="zoom-in" >
             <img
               src={edwinImage} // Cambia esto por tu foto real
               alt="Edwin Marquez"
@@ -61,7 +61,7 @@ function AboutMe() {
           </Col>
 
           {/* Quién Soy*/}
-          <Col className="mt-5 text-center">
+          <Col className="mt-5 text-center" data-aos="zoom-in">
             <h3>¿Quién Soy?</h3>
             <p className="lead">
               Soy un ingeniero en sistemas comprometido con la evolución
@@ -74,20 +74,22 @@ function AboutMe() {
 
         {/* Mi Trayectoria */}
         <Row className="mt-5">
-          <Col>
+          <Col data-aos="zoom-in">
             <h3 className="text-center mb-4">Mi Trayectoria</h3>
             <Carousel
               responsive={{
                 superLargeDesktop: {
                   breakpoint: { max: 4000, min: 1200 },
-                  items: 4,
+                  items: 3,
                 },
                 desktop: { breakpoint: { max: 1200, min: 992 }, items: 3 },
                 tablet: { breakpoint: { max: 992, min: 768 }, items: 2 },
                 mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
               }}
               infinite
-              autoPlay={false}
+              autoPlay={true}
+              autoPlaySpeed={4000} // tiempo entre cada cambio en milisegundos
+              transitionDuration={2000} // duración de la animación del cambio en milisegundos
             >
               {trayectoria.map((item, idx) => (
                 <div key={idx} className="p-2">
@@ -121,10 +123,10 @@ function AboutMe() {
             </Modal>
           </Col>
         </Row>
-<br />
-<br />
+        <br />
+        <br />
         {/* Mi Estilo de Trabajo */}
-        <Row className="mt-12 text-center">
+        <Row className="mt-12 text-center" data-aos="zoom-in">
           <Col>
             <h3>Mi Estilo de Trabajo</h3>
             <p className="lead">
@@ -136,7 +138,7 @@ function AboutMe() {
         </Row>
 
         {/* Más Allá del Código */}
-        <Row className="mt-5 text-center">
+        <Row className="mt-5 text-center" data-aos="zoom-in">
           <Col>
             <h3>Más Allá del Código</h3>
             <p className="lead">
