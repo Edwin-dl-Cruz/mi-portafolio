@@ -6,11 +6,12 @@ import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Hobbies from './pages/Hobbies';
 import Contact from './pages/Contact';
-
+import WaveBackground from './components/WaveBackground';
 
 function App() {
   return (
     <>
+     <WaveBackground />
       <Navbar />
       <Routes>
         <Route path="/mi-portafolio" element={<Home />} />
